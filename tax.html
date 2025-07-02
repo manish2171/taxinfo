@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India's Great Tax Shift: An Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+            max-height: 50vh;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+                max-height: 60vh;
+            }
+        }
+        .kpi-value {
+            font-weight: 900;
+            line-height: 1;
+        }
+        .flow-arrow {
+            content: '→';
+            font-size: 2rem;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center my-8 md:my-12">
+            <h1 class="text-4xl md:text-6xl font-black text-[#003f5c] tracking-tight">India's Great Tax Shift</h1>
+            <p class="text-xl md:text-2xl mt-2 text-[#2f4b7c]">From Corporate Dominance to Individual Contribution</p>
+        </header>
+
+        <section id="hook" class="my-10">
+             <div class="bg-white rounded-2xl shadow-xl p-6 md:p-10 max-w-4xl mx-auto text-center">
+                <p class="text-2xl md:text-3xl font-semibold text-[#003f5c]">A Historic Crossover</p>
+                <p class="text-lg text-gray-600 mt-2 mb-4">In a landmark change for India's economy, personal income tax is now the largest source of direct tax revenue.</p>
+                <div class="bg-gradient-to-br from-[#ffa600] to-[#f95d6a] text-white rounded-lg p-6 flex flex-col items-center justify-center">
+                    <span class="text-sm uppercase font-bold tracking-wider">Personal Income Tax Share (2023-24)</span>
+                    <span class="text-7xl md:text-8xl kpi-value mt-2">~53%</span>
+                    <span class="text-lg font-semibold mt-2">of Total Direct Tax Collections</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="period1" class="my-12">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-[#003f5c]">2004–2009: The Era of Corporate Dominance</h2>
+                <p class="max-w-3xl mx-auto mt-2 text-gray-600">In the mid-2000s, India's economic engine was clearly powered by its corporate sector. Corporate tax collections significantly outpaced personal income tax, reflecting a period of robust industrial and business growth.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                <div class="lg:col-span-2 bg-white rounded-lg shadow-md p-6">
+                    <div class="chart-container">
+                        <canvas id="lineChart2004"></canvas>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-6 text-center">
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-lg font-semibold text-[#f95d6a]">Corporate Tax Growth</h3>
+                        <p class="text-5xl kpi-value text-[#f95d6a]">158%</p>
+                        <p class="text-gray-500">from 2004-05 to 2008-09</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-lg font-semibold text-[#ffa600]">Personal Tax Growth</h3>
+                        <p class="text-5xl kpi-value text-[#ffa600]">144%</p>
+                        <p class="text-gray-500">A strong, but secondary, force</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="period2" class="my-12">
+             <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-[#003f5c]">2014–2019: The Turning Tide</h2>
+                <p class="max-w-3xl mx-auto mt-2 text-gray-600">This period marked a critical transition. While corporate tax revenue continued to grow in absolute terms, personal income tax began growing at a much faster rate, narrowing the gap and signaling a fundamental shift in the economy.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                    <h3 class="text-xl font-bold text-gray-700 mb-4">Direct Tax Share (2018-19)</h3>
+                    <div class="chart-container h-64 max-h-[300px] md:h-80 md:max-h-[350px]">
+                        <canvas id="donutChart2019"></canvas>
+                    </div>
+                    <p class="text-gray-600 mt-4">Corporate tax's share began to decline as the individual tax base expanded significantly.</p>
+                </div>
+                 <div class="lg:col-span-2 bg-white rounded-lg shadow-md p-6">
+                    <div class="chart-container">
+                        <canvas id="barChart2014"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="period3" class="my-12">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-[#003f5c]">2019–2024: A New Paradigm</h2>
+                <p class="max-w-3xl mx-auto mt-2 text-gray-600">The shift culminates. Post-2019, personal income tax collections not only caught up but decisively overtook corporate tax. This reflects a more formalized, digitized economy and a broader individual taxpayer base.</p>
+            </div>
+             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                <div class="lg:col-span-2 bg-white rounded-lg shadow-md p-6">
+                    <div class="chart-container">
+                        <canvas id="areaChart2019"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                    <h3 class="text-xl font-bold text-gray-700 mb-4">Direct Tax Share (2023-24)</h3>
+                    <div class="chart-container h-64 max-h-[300px] md:h-80 md:max-h-[350px]">
+                        <canvas id="donutChart2024"></canvas>
+                    </div>
+                     <p class="text-gray-600 mt-4">Individuals now contribute the majority of direct tax revenue, a complete reversal from a decade prior.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="reasons" class="my-12">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-[#003f5c]">What's Driving the Shift?</h2>
+                <p class="max-w-3xl mx-auto mt-2 text-gray-600">The reversal is not accidental but the result of several converging economic and policy factors.</p>
+            </div>
+            <div class="flex flex-col md:flex-row justify-center items-start gap-8">
+                <div class="w-full md:w-2/5 bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-bold text-center text-[#ffa600]">Factors Boosting Personal Tax</h3>
+                    <ul class="mt-4 space-y-3 list-inside list-disc text-gray-700">
+                        <li><span class="font-semibold">Broader Tax Base:</span> More individuals entering the formal workforce.</li>
+                        <li><span class="font-semibold">Digitization & Compliance:</span> Technology making tax evasion harder and filing easier.</li>
+                        <li><span class="font-semibold">Wage Growth:</span> Rising salaries, especially in the services sector, push more people into higher tax brackets.</li>
+                    </ul>
+                </div>
+
+                <div class="w-full md:w-2/5 bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-bold text-center text-[#f95d6a]">Factors Moderating Corporate Tax</h3>
+                    <ul class="mt-4 space-y-3 list-inside list-disc text-gray-700">
+                        <li><span class="font-semibold">Corporate Rate Cuts:</span> Significant rate reductions in 2019 lowered the relative growth of corporate tax revenue.</li>
+                        <li><span class="font-semibold">GST Impact:</span> Corporations benefit from input tax credits under GST, which can reduce their overall tax incidence compared to individuals.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="gemini-feature" class="my-12">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-[#003f5c]">✨ Tax Terminology Explainer ✨</h2>
+                <p class="max-w-3xl mx-auto mt-2 text-gray-600">Unsure about a tax term? Ask our AI assistant for a quick explanation!</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6 max-w-2xl mx-auto">
+                <div class="flex flex-col md:flex-row gap-4 items-center">
+                    <input type="text" id="taxTermInput" placeholder="e.g., Corporate Tax, Direct Tax" class="flex-grow p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ffa600]">
+                    <button id="explainTermBtn" class="bg-[#ffa600] text-white px-6 py-3 rounded-md font-semibold hover:bg-[#f95d6a] transition duration-300 ease-in-out whitespace-nowrap">
+                        Explain Term ✨
+                    </button>
+                </div>
+                <div id="explanationOutput" class="mt-6 p-4 bg-slate-50 border border-slate-200 rounded-md text-gray-700 min-h-[100px] flex items-center justify-center text-center">
+                    <p class="text-gray-500">Your explanation will appear here.</p>
+                </div>
+                <div id="loadingIndicator" class="hidden text-center mt-4 text-[#003f5c] font-semibold">
+                    Loading explanation...
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center mt-12 py-6 border-t border-gray-300">
+            <p class="text-gray-500">Data sourced from the Department of Revenue (DoR), Government of India. Infographic created on July 2, 2025.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const chartTooltipPlugin = {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                                return label.join(' ');
+                            }
+                            return label;
+                        }
+                    }
+                }
+            };
+            
+            const brilliantBlues = {
+                corp: '#f95d6a',
+                personal: '#ffa600',
+                corpFill: 'rgba(249, 93, 106, 0.2)',
+                personalFill: 'rgba(255, 166, 0, 0.2)',
+                grid: '#e2e8f0',
+                text: '#475569'
+            };
+
+            const lineChartData2004 = {
+                labels: ['2004-05', '2005-06', '2006-07', '2007-08', '2008-09'],
+                datasets: [
+                    {
+                        label: 'Corporate Tax (₹ Cr)',
+                        data: [82680, 101277, 144318, 193561, 213395],
+                        borderColor: brilliantBlues.corp,
+                        backgroundColor: brilliantBlues.corp,
+                        tension: 0.1,
+                        fill: false
+                    },
+                    {
+                        label: 'Personal Income Tax (₹ Cr)',
+                        data: [49268, 63689, 85623, 120429, 120034],
+                        borderColor: brilliantBlues.personal,
+                        backgroundColor: brilliantBlues.personal,
+                        tension: 0.1,
+                        fill: false
+                    }
+                ]
+            };
+            new Chart(document.getElementById('lineChart2004'), {
+                type: 'line',
+                data: lineChartData2004,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: chartTooltipPlugin,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: { color: brilliantBlues.text },
+                            grid: { color: brilliantBlues.grid }
+                        },
+                        x: {
+                            ticks: { color: brilliantBlues.text },
+                            grid: { color: brilliantBlues.grid }
+                        }
+                    }
+                }
+            });
+
+            const barChartData2014 = {
+                labels: ['2014-15', '2015-16', '2016-17', '2017-18', '2018-19'],
+                datasets: [
+                    {
+                        label: 'Corporate Tax (₹ Cr)',
+                        data: [428925, 453228, 484924, 571202, 663572],
+                        backgroundColor: brilliantBlues.corp,
+                    },
+                    {
+                        label: 'Personal Income Tax (₹ Cr)',
+                        data: [265772, 287637, 349503, 420084, 473179],
+                        backgroundColor: brilliantBlues.personal,
+                    }
+                ]
+            };
+            new Chart(document.getElementById('barChart2014'), {
+                type: 'bar',
+                data: barChartData2014,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: chartTooltipPlugin,
+                    scales: {
+                         y: {
+                            beginAtZero: true,
+                            ticks: { color: brilliantBlues.text },
+                            grid: { color: brilliantBlues.grid }
+                        },
+                        x: {
+                            ticks: { color: brilliantBlues.text },
+                            grid: { color: brilliantBlues.grid }
+                        }
+                    }
+                }
+            });
+
+            const donutData2019 = {
+                labels: ['Corporate Tax (~58%)', 'Personal Tax (~42%)'],
+                datasets: [{
+                    data: [663572, 473179],
+                    backgroundColor: [brilliantBlues.corp, brilliantBlues.personal],
+                    hoverOffset: 4
+                }]
+            };
+            new Chart(document.getElementById('donutChart2019'), {
+                type: 'doughnut',
+                data: donutData2019,
+                options: { responsive: true, maintainAspectRatio: false, plugins: chartTooltipPlugin }
+            });
+
+            const areaChartData2019 = {
+                labels: ['2019-20', '2020-21', '2021-22', '2022-23', '2023-24'],
+                 datasets: [
+                    {
+                        label: 'Corporate Tax (₹ Cr)',
+                        data: [556876, 457719, 712037, 825834, 911055],
+                        borderColor: brilliantBlues.corp,
+                        backgroundColor: brilliantBlues.corpFill,
+                        fill: true,
+                        tension: 0.3
+                    },
+                    {
+                        label: 'Personal Income Tax (₹ Cr)',
+                        data: [492717, 487560, 696604, 833307, 1045139],
+                        borderColor: brilliantBlues.personal,
+                        backgroundColor: brilliantBlues.personalFill,
+                        fill: true,
+                        tension: 0.3
+                    }
+                ]
+            };
+            new Chart(document.getElementById('areaChart2019'), {
+                type: 'line',
+                data: areaChartData2019,
+                 options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: chartTooltipPlugin,
+                    scales: {
+                        y: {
+                            stacked: true,
+                            beginAtZero: true,
+                            ticks: { color: brilliantBlues.text },
+                            grid: { color: brilliantBlues.grid }
+                        },
+                        x: {
+                            ticks: { color: brilliantBlues.text },
+                            grid: { color: brilliantBlues.grid }
+                        }
+                    },
+                    interaction: {
+                        mode: 'index',
+                        intersect: false
+                    }
+                }
+            });
+            
+            const donutData2024 = {
+                labels: ['Personal Tax (~53%)', 'Corporate Tax (~47%)'],
+                datasets: [{
+                    data: [1045139, 911055],
+                    backgroundColor: [brilliantBlues.personal, brilliantBlues.corp],
+                    hoverOffset: 4
+                }]
+            };
+            new Chart(document.getElementById('donutChart2024'), {
+                type: 'doughnut',
+                data: donutData2024,
+                options: { responsive: true, maintainAspectRatio: false, plugins: chartTooltipPlugin }
+            });
+
+            const taxTermInput = document.getElementById('taxTermInput');
+            const explainTermBtn = document.getElementById('explainTermBtn');
+            const explanationOutput = document.getElementById('explanationOutput');
+            const loadingIndicator = document.getElementById('loadingIndicator');
+
+            explainTermBtn.addEventListener('click', async () => {
+                const term = taxTermInput.value.trim();
+                if (!term) {
+                    explanationOutput.innerHTML = '<p class="text-red-500">Please enter a term to explain.</p>';
+                    return;
+                }
+
+                explanationOutput.innerHTML = '<p class="text-gray-500">Generating explanation...</p>';
+                loadingIndicator.classList.remove('hidden');
+
+                const prompt = `Explain the tax term "${term}" in simple language, relevant to the Indian tax context if applicable. Keep the explanation concise, around 100-150 words.`;
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                const payload = { contents: chatHistory };
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        explanationOutput.innerHTML = `<p>${text}</p>`;
+                    } else {
+                        explanationOutput.innerHTML = '<p class="text-red-500">Could not get an explanation. Please try again.</p>';
+                    }
+                } catch (error) {
+                    console.error('Error fetching explanation:', error);
+                    explanationOutput.innerHTML = '<p class="text-red-500">An error occurred while fetching the explanation. Please check your network connection.</p>';
+                } finally {
+                    loadingIndicator.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
